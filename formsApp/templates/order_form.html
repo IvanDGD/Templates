@@ -1,0 +1,16 @@
+{% extends "forms_layout.html" %}
+
+{% block form_content %}
+<div class="container">
+    <h2>Create Order</h2>
+    <form method="post" action="{% url 'order_form' %}" novalidate>
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="waves-effect waves-light red accent-3 btn">
+            <i class="material-icons left">send</i>Submit Order
+        </button>
+    </form>
+</div>
+{% endblock form_content %}

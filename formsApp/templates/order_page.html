@@ -1,0 +1,29 @@
+{% extends "forms_layout.html" %}
+
+{% block form_content %}
+<form method="post" enctype="multipart/form-data" action="{% url 'order_form' %}">
+    {% csrf_token %}
+    <p>Name:</p>
+    <input name="name" placeholder="Name">
+    <p>Surname:</p>
+    <input name="surname" placeholder="Surname">
+    <p>Phone:</p>
+    <input name="number" placeholder="Phone">
+    <p>Address:</p>
+    <input name="address" placeholder="Address">
+    <p>Month Count:</p>
+    <select name="monthCount">
+        <option value="1">1 Month</option>
+        <option value="2">3 Months</option>
+        <option value="3">6 Months</option>
+        <option value="4">12 Months</option>
+    </select>
+    <p>Bottle Volume:</p>
+    <select name="bottleVolume">
+        <option value="1">5 liters</option>
+        <option value="2">10 liters</option>
+        <option value="3">15 liters</option>
+    </select>
+    <button type="submit">Create Order</button>
+</form>
+{% endblock form_content %}

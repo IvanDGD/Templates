@@ -1,0 +1,16 @@
+{% extends "forms_layout.html" %}
+
+{% block form_content %}
+<form method="post" action="{% url "simple_form" %}" novalidate>
+    {% csrf_token %}
+    {% comment %} divs {% endcomment %}
+    {% comment %} {{form}} {% endcomment %}
+    {% comment %} as table {% endcomment %}
+    {% comment %} {{form.as_table}} {% endcomment %}
+    {% comment %} {{form.as_ul}}
+    {{form.as_p}} {% endcomment %}
+    {{form.as_p}}
+    <button type="submit" class="waves-effect waves-light red accent-3 btn"><i class="material-icons left">open_in_new</i>Register</button>
+    {% comment %} <button type="submit">Send</button> {% endcomment %}
+</form>
+{% endblock form_content %}

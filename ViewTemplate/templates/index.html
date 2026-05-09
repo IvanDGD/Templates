@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Templates</title>
+    <style>
+        .welcome{
+            color: darkgreen;
+        }
+        .success{
+            color: green;
+            font-weight: bold;
+            font-size: 25px;
+        }
+        .error{
+            color: red;
+            font-weight: bold;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url "text_format"%}">Go to page "Text Format"</a>
+    <h1>Main Page</h1>
+    <h1 class="welcome">{{welcom_text}}</h1>
+    {%autoescape off%} <!-- This tag is used to disable auto-escaping of HTML content -->
+    {{html_tag}}
+    {%endautoescape%}
+    
+
+    <ul>
+        <li>Integer: {{value_int}}</li>
+        <li>Float: {{value_float}}</li>
+        <li>Boolean: {{value_bool}}</li>
+        <li>List: {{list}}</li>
+        <li>Dictionary: {{dict}}</li>
+        <li>Person: {{person}}</li>
+    </ul>
+    <p>Name: {{person.name}}</p>
+    <p>List Item: {{list.1}}</p>
+    <p>Dict Item: {{dict.surname}}</p>
+
+    {% if value_bool %}
+        <p class="success">Condition is True</p>
+    {% else %}
+        <p class="error">Condition is False</p>
+    {% endif %}
+
+    <h4>Random Value: {{random_value}}</h4>
+
+    {%if random_value < 0 %}
+        <p class="error">Random value is negative</p>
+    {%elif random_value == 0 %}
+        <p class="welcome">Random value is zero</p>
+    {%else%}
+        <p class="success">Random value is positive</p>
+    {%endif%}
+
+
+    <ul>
+        <p>List Items: </p>
+        {% for item in list %}
+            <li>{{item}}</li>
+            {%empty%} <!-- This tag is used to display content when the list is empty -->
+                <p>No items in the list</p>
+        {% endfor %}
+    <p>Dictionary Items:</p>
+        {% for key, value in dict.items %}
+            <li>{{key}}: {{value}}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Datetime: {% now "DATE_FOMAT"%}</p>
+    <p>Year: {% now "N o h i s u" %}</p><!--N o h i s u date format-->
+
+
+    {% lorem 5 p%} <!-- This tag is used to generate random lorem ipsum text. The number 5 indicates the number of paragraphs to generate. -->
+</body>
+</html>

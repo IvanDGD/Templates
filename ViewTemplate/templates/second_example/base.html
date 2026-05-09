@@ -1,0 +1,62 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="{%static 'css/materialize.min.css'%}" media ="screen,projection"/>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+      
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-wraper">
+            <a href="#" class="brand-logo">Logo</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{% url "index" %}">First example</a></li>
+                <li><a href="{% url "text_format" %}">Text Format</a></li>
+                <li><a href="{% url "contacts" %}">Contacts</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        {% block unexisting_block %}
+            {% comment %}
+             <h1>This block is intentionally left unexisting to demonstrate the use of blocks in Django templates. </h1>
+            {% endcomment %}
+        {% endblock unexisting_block%}
+        {% block main_page %}{% endblock main_page%}
+        {% block contacts %}{% endblock contacts%}
+    </div>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use this space to include additional information about your website, such as contact details, social media links, or any other relevant content.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                &copy; 2026 Django Project. All rights reserved.
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="{%static 'js/materialize.min.js'%}"></script>
+</body>
+</html>

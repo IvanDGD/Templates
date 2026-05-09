@@ -1,0 +1,12 @@
+{% extends "forms_layout.html" %}
+
+{% block form_content %}
+<form method="post" enctype="multipart/form-data" action="{% url "simple_form" %}">
+    {% csrf_token %}
+    <p>Name:</p>
+    <input name="name" placeholder="Name">
+    <p>Surname:</p>
+    <input name="surname" placeholder="Surname">
+    <button type="submit">Register</button>
+  </form>
+{% endblock form_content %}
