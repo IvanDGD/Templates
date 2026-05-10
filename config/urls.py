@@ -21,9 +21,10 @@ from config import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-   # path('admin/', admin.site.urls),
-   path("templates/", include("ViewTemplate.urls")),
-   path("forms/", include("formsApp.urls"))
+    # path('admin/', admin.site.urls),
+    path("templates/", include("ViewTemplate.urls")),
+    path("forms/", include("formsApp.urls")),
+    path("models/", include("ModelsApp.urls")),
 ]
 
 if settings.DEBUG:

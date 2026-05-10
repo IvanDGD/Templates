@@ -1,0 +1,41 @@
+{% extends "forms_layout.html" %}
+
+{% block form_content %}
+<h2>Add Product</h2>
+    <form method="post" action="{% url 'add_product' %}">
+        {% csrf_token %}
+        <button type="submit" class="waves-effect waves-light red accent-3 btn">
+            <i class="material-icons left">send</i>Add
+        </button>
+    </form>
+<h2>Product list</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td>
+                    <a href="{% url 'update_product' product.id %}" class="btn">Update</a>
+                    <a href="{% url 'del_product' product.id %}" class="btn">Delete</a>
+                    <a href="{% url 'product' product.id %}" class="btn">Detail</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">No products</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock form_content %}

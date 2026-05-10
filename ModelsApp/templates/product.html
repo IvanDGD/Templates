@@ -1,0 +1,12 @@
+{% extends "forms_layout.html" %}
+
+{% block form_content %}
+<h2>Product</h2>
+<p>Id: {{ product.id }}</p>
+<p>Name: {{ product.name }}</p>
+<p>Description: {{ product.description }}</p>
+<p>Price: {{ product.price }}</p>
+<a href="{% url 'products' %}" style="padding: 10px; background: #eee; text-decoration: none; border: 1px solid #ccc;">
+    Comeback
+</a>
+{% endblock form_content %}

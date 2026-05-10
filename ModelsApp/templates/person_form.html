@@ -1,0 +1,54 @@
+{% extends "forms_layout.html" %}
+
+{% block form_content %}
+<div class="container">
+    <h2>Add person</h2>
+    <form method="post" action="{% url 'person_post' %}">
+        {% csrf_token %}
+        <label>{{ form.name.label }}:</label>
+        {{ form.name }}
+        <label>{{ form.surname.label }}:</label>
+        {{ form.surname }}
+        <label>{{ form.email.label }}:</label>
+        {{ form.email }}
+        <label>{{ form.phone.label }}:</label>
+        {{ form.phone }}
+        <label>{{ form.additional.label }}:</label>
+        {{ form.additional }}
+
+        <button type="submit" class="waves-effect waves-light red accent-3 btn">
+            <i class="material-icons left">send</i>Send
+        </button>
+    </form>
+
+    <hr>
+
+    <h2>Persons list</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Additional</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for person in persons %}
+            <tr>
+                <td>{{ person.name }}</td>
+                <td>{{ person.surname }}</td>
+                <td>{{ person.phone }}</td>
+                <td>{{ person.email }}</td>
+                <td>{{ person.additional }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">No contacts</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock form_content %}
